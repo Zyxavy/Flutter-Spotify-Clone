@@ -7,7 +7,8 @@ class ShellScaffold extends StatelessWidget {
   final Widget child;
   const ShellScaffold({super.key, required this.child});
 
-  static const _tabs = ['/home', '/search', '/library', '/premium', '/create'];
+  static const _tabs = ['/home', '/search', '/library', '/premium'];
+  static const _createIndex = 4;
 
   int _currentIndex(BuildContext context) {
     final loc = GoRouterState.of(context).matchedLocation;
@@ -33,7 +34,7 @@ class ShellScaffold extends StatelessWidget {
         selectedItemColor: AppColors.textPrimary,
         unselectedItemColor: AppColors.textSecondary,
         onTap: (i) {
-          if (_tabs[i] == '/create') {
+           if (i == _createIndex) {
             context.push('/create');
             return;
           }

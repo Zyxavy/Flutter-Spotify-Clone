@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../theme/app_colors.dart';
 import '../../data/mock_data.dart';
 import '../../theme/app_text_styles.dart';
 import '../../widgets/genre_chip.dart';
@@ -21,12 +20,13 @@ class _HomeScreenState extends State<HomeScreen> {
       context: context,
       barrierDismissible: true,
       barrierLabel: 'home-side-nav',
-      barrierColor: Colors.black.withOpacity(0.6),
+      barrierColor: Colors.black.withValues(alpha: 0.6),
       transitionDuration: const Duration(milliseconds: 220),
-      pageBuilder: (_, __, ___) => HomeSideNav(
-        onClose: () => Navigator.of(context).maybePop(),
+      pageBuilder: (dialogContext, _, _) => HomeSideNav(
+        onClose: () => Navigator.of(dialogContext).pop(),
+
       ),
-      transitionBuilder: (_, animation, __, child) {
+      transitionBuilder: (_, animation, _, child) {
         final curved = CurvedAnimation(parent: animation, curve: Curves.easeOutCubic);
         return SlideTransition(
           position: Tween<Offset>(begin: const Offset(-0.06, 0), end: Offset.zero).animate(curved),
