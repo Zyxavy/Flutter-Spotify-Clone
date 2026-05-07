@@ -6,9 +6,36 @@ import '../../widgets/genre_chip.dart';
 import '../../widgets/mix_card.dart';
 import '../../widgets/section_header.dart';
 import '../../widgets/song_tile.dart';
+import '../../widgets/home_side_nav.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  void _showSideNav() {
+    showGeneralDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      barrierLabel: 'home-side-nav',
+      barrierColor: Colors.black.withOpacity(0.6),
+      transitionDuration: const Duration(milliseconds: 220),
+      pageBuilder: (_, __, ___) => HomeSideNav(
+        onClose: () => Navigator.of(context).maybePop(),
+      ),
+      transitionBuilder: (_, animation, __, child) {
+        final curved = CurvedAnimation(parent: animation, curve: Curves.easeOutCubic);
+        return SlideTransition(
+          position: Tween<Offset>(begin: const Offset(-0.06, 0), end: Offset.zero).animate(curved),
+          child: FadeTransition(opacity: curved, child: child),
+        );
+      },
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +43,8 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.fromLTRB(14, 6, 14, 8),
-          children: const [
-            _TopChips(),
+          children: [
+            _TopChips(onAvatarTap: _showSideNav),
             SizedBox(height: 14),
             _QuickGrid(),
             SizedBox(height: 20),
@@ -37,16 +64,24 @@ class HomeScreen extends StatelessWidget {
 }
 
 class _TopChips extends StatelessWidget {
-  const _TopChips();
+  final VoidCallback onAvatarTap;
+
+  const _TopChips({required this.onAvatarTap});
+
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const CircleAvatar(
-          radius: 17,
-          backgroundColor: Color(0xFFFF6B2A),
-          child: Text('K', style: TextStyle(fontWeight: FontWeight.w800, color: Colors.black)),
+        InkWell(
+          onTap: onAvatarTap,
+          borderRadius: BorderRadius.circular(18),
+          child: const CircleAvatar(
+            radius: 17,
+            backgroundColor: Color(0xFFFF6B2A),
+            child: Text('K', style: TextStyle(fontWeight: FontWeight.w800, color: Colors.black)),
+          ),
+
         ),
         for (final genre in topGenres) ...[
           const SizedBox(width: 8),
