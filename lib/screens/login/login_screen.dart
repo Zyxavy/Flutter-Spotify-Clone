@@ -10,7 +10,7 @@ class LoginScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () => context.go('/home'),
-          child: const Text('Enter Spotify Clone'),
+          child: const Text('Login to be implemented (tap me)'),
         ),
       ),
     );
