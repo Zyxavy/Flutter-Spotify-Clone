@@ -5,6 +5,23 @@ import '../data/models/genre.dart';
 import '../data/models/mix.dart';
 import '../data/models/song.dart';
 
+class RecentSearchItem {
+  const RecentSearchItem({
+    required this.title,
+    required this.subtitle,
+    required this.thumbnailColor,
+    required this.thumbnailIcon,
+    required this.trailingIcon,
+  });
+
+  final String title;
+  final String subtitle;
+  final Color thumbnailColor;
+  final IconData thumbnailIcon;
+  final IconData trailingIcon;
+}
+
+
 const topGenres = <Genre>[
   Genre(label: 'All', isActive: true),
   Genre(label: 'Music'),
@@ -38,4 +55,42 @@ const featuredArtists = <Artist>[
   Artist(name: 'Bruno Mars', description: 'Pop · Funk · Soul'),
   Artist(name: 'Daniel Caesar', description: 'R&B · Soul'),
   Artist(name: 'Taylor Swift', description: 'Pop · Country'),
+];
+
+const recentSearchItems = <RecentSearchItem>[
+  RecentSearchItem(
+    title: 'Daily Mix 1',
+    subtitle: 'Playlist · Spotify',
+    thumbnailColor: Color(0xFF355E3B),
+    thumbnailIcon: Icons.queue_music,
+    trailingIcon: Icons.close,
+  ),
+  RecentSearchItem(
+    title: 'Bruno Mars',
+    subtitle: 'Artist',
+    thumbnailColor: Color(0xFF6D4C41),
+    thumbnailIcon: Icons.person,
+    trailingIcon: Icons.close,
+  ),
+  RecentSearchItem(
+    title: 'Chill Hits',
+    subtitle: 'Playlist · Spotify',
+    thumbnailColor: Color(0xFF1565C0),
+    thumbnailIcon: Icons.headphones,
+    trailingIcon: Icons.close,
+  ),
+  RecentSearchItem(
+    title: 'Liked Songs',
+    subtitle: 'Playlist',
+    thumbnailColor: Color(0xFF512DA8),
+    thumbnailIcon: Icons.favorite,
+    trailingIcon: Icons.close,
+  ),
+  RecentSearchItem(
+    title: 'Podcast: Tech Today',
+    subtitle: 'Podcast',
+    thumbnailColor: Color(0xFF00897B),
+    thumbnailIcon: Icons.mic,
+    trailingIcon: Icons.close,
+  ),
 ];

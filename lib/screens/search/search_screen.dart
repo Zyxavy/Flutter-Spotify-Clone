@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:go_router/go_router.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/app_text_styles.dart';
 
@@ -9,7 +9,7 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
+    return Scaffold(
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.fromLTRB(14, 10, 14, 20),
@@ -60,22 +60,28 @@ class _SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 48,
-      padding: const EdgeInsets.symmetric(horizontal: 12),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(6),
-      ),
-      child: Row(
-        children: [
-          const Icon(Icons.search, color: Colors.black87, size: 23),
-          const SizedBox(width: 10),
-          Text(
-            'What do you want to listen to?',
-            style: AppTextStyles.bodyM.copyWith(color: Colors.black87, fontWeight: FontWeight.w700),
-          ),
-        ],
+    return GestureDetector(
+      onTap: () => context.push('/search/focused'),
+      child: Container(
+        height: 48,
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        decoration: BoxDecoration(
+          color: AppColors.textPrimary,
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: Row(
+          children: [
+            const Icon(Icons.search, color: Colors.black, size: 23),
+            const SizedBox(width: 10),
+            Text(
+              'Artists, songs, or podcasts',
+              style: AppTextStyles.bodyM.copyWith(
+                color: Colors.black87,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -145,7 +151,7 @@ class _DiscoverRow extends StatelessWidget {
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: _cards.length,
-        separatorBuilder: (_, _) => const SizedBox(width: 10),
+        separatorBuilder: (_, __) => const SizedBox(width: 10),
         itemBuilder: (_, index) {
           final (title, subtitle, color) = _cards[index];
           return Container(
@@ -218,6 +224,5 @@ class _BrowseAllScaffold extends StatelessWidget {
         );
       },
     );
-
   }
 }

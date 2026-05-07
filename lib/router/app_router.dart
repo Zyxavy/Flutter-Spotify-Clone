@@ -6,6 +6,7 @@ import '../screens/library/library_screen.dart';
 import '../screens/login/login_screen.dart';
 import '../screens/premium/premium_screen.dart';
 import '../screens/search/search_screen.dart';
+import '../screens/search/search_tapped_screen.dart';
 import '../widgets/shell_scaffold.dart';
 
 final appRouter = GoRouter(
@@ -19,7 +20,17 @@ final appRouter = GoRouter(
       builder: (context, state, child) => ShellScaffold(child: child),
       routes: [
         GoRoute(path: '/home', builder: (_, _) => const HomeScreen()),
-        GoRoute(path: '/search', builder: (_, _) => const SearchScreen()),
+        GoRoute(
+          path: '/search',
+          builder: (_, __) => const SearchScreen(),
+          routes: [
+            GoRoute(
+              path: 'focused',
+              builder: (_, __) => const SearchTappedScreen(),
+            ),
+          ],
+        ),
+
         GoRoute(path: '/library', builder: (_, _) => const LibraryScreen()),
         GoRoute(path: '/premium', builder: (_, _) => const PremiumScreen()),
         GoRoute(
