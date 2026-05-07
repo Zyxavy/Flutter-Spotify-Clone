@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../screens/create/create_screen.dart';
 import '../screens/home/home_screen.dart';
 import '../screens/library/library_screen.dart';
 import '../screens/login/login_screen.dart';
@@ -12,19 +13,25 @@ final appRouter = GoRouter(
   routes: [
     GoRoute(
       path: '/login',
-      builder: (_, __) => const LoginScreen(),
+      builder: (_, _) => const LoginScreen(),
     ),
     ShellRoute(
       builder: (context, state, child) => ShellScaffold(child: child),
       routes: [
-        GoRoute(path: '/home', builder: (_, __) => const HomeScreen()),
-        GoRoute(path: '/search', builder: (_, __) => const SearchScreen()),
-        GoRoute(path: '/library', builder: (_, __) => const LibraryScreen()),
-        GoRoute(path: '/premium', builder: (_, __) => const PremiumScreen()),
+        GoRoute(path: '/home', builder: (_, _) => const HomeScreen()),
+        GoRoute(path: '/search', builder: (_, _) => const SearchScreen()),
+        GoRoute(path: '/library', builder: (_, _) => const LibraryScreen()),
+        GoRoute(path: '/premium', builder: (_, _) => const PremiumScreen()),
         GoRoute(
           path: '/create',
-          builder: (_, __) => const Scaffold(
-            body: Center(child: Text('Create (stub)')),
+           pageBuilder: (context, state) => CustomTransitionPage<void>(
+            key: state.pageKey,
+            opaque: false,
+            barrierColor: Colors.transparent,
+            child: const CreateScreen(),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+                FadeTransition(opacity: animation, child: child),
+
           ),
         ),
       ],

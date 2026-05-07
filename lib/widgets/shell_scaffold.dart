@@ -32,7 +32,14 @@ class ShellScaffold extends StatelessWidget {
         backgroundColor: AppColors.bg,
         selectedItemColor: AppColors.textPrimary,
         unselectedItemColor: AppColors.textSecondary,
-        onTap: (i) => context.go(_tabs[i]),
+        onTap: (i) {
+          if (_tabs[i] == '/create') {
+            context.push('/create');
+            return;
+          }
+          context.go(_tabs[i]);
+        },
+
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
