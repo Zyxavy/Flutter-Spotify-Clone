@@ -70,10 +70,7 @@ class HomeSideNav extends StatelessWidget {
                     ],
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(18, 0, 18, 16),
-                  child: _ActivityChip(),
-                ),
+        
                 const Divider(color: Color(0xFF2A2A2A), height: 1),
                 const SizedBox(height: 8),
                 const _MenuItem(label: 'Add account'),
@@ -114,34 +111,6 @@ class HomeSideNav extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _ActivityChip extends StatelessWidget {
-  const _ActivityChip();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
-      decoration: BoxDecoration(
-        color: const Color(0xFF2A2A2A),
-        borderRadius: BorderRadius.circular(18),
-      ),
-      child: const Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(Icons.bolt, size: 14, color: Color(0xFF1ED760)),
-          SizedBox(width: 6),
-          Text(
-            'Activity',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 12),
-          ),
-          SizedBox(width: 8),
-          Icon(Icons.keyboard_arrow_down, size: 16, color: Color(0xFFB3B3B3)),
-        ],
       ),
     );
   }
