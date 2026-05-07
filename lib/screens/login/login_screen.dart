@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../theme/app_colors.dart';
+import '../../theme/app_text_styles.dart';
+
+
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.bg,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -18,25 +22,22 @@ class LoginScreen extends StatelessWidget {
                 width: 72,
                 height: 72,
                 decoration: const BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.textPrimary,
                   shape: BoxShape.circle,
                 ),
+
                 child: const Icon(  //CHANGE TO SPOTIFY LOGO
                   Icons.music_note,
-                  color: Colors.black,
+                  color: AppColors.bg,
                   size: 40,
                 ),
+
               ),
               const SizedBox(height: 28),
-              const Text(
+              Text(
                 'Millions of songs.\nFree on Spotify.',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 34,
-                  fontWeight: FontWeight.w700,
-                  height: 1.2,
-                ),
+                style: AppTextStyles.headingXL.copyWith(height: 1.2),
               ),
               const SizedBox(height: 44),
               SizedBox(
@@ -45,15 +46,13 @@ class LoginScreen extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () => context.go('/home'),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF1ED760),
-                    foregroundColor: Colors.black,
+                    backgroundColor: AppColors.spotifyGreen,
+                    foregroundColor: AppColors.bg,
+
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(28),
                     ),
-                    textStyle: const TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    textStyle: AppTextStyles.titleS.copyWith(fontWeight: FontWeight.w700),
                   ),
                   child: const Text('Sign up free'),
                 ),
@@ -65,28 +64,22 @@ class LoginScreen extends StatelessWidget {
                 child: OutlinedButton(
                   onPressed: () => context.go('/home'),
                   style: OutlinedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    side: const BorderSide(color: Colors.white54),
+                    foregroundColor: AppColors.textPrimary,
+                    side: BorderSide(color: AppColors.textPrimary.withValues(alpha: 0.54)),
+
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(28),
                     ),
-                    textStyle: const TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    textStyle: AppTextStyles.titleS.copyWith(fontWeight: FontWeight.w700),
                   ),
                   child: const Text('Log in'),
                 ),
               ),
               const Spacer(flex: 2),
-              const Text(
+              Text(
                 'By continuing, you agree to Spotify\'s terms and privacy policy.',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white54,
-                  fontSize: 12,
-                  height: 1.4,
-                ),
+                style: AppTextStyles.bodyS.copyWith(height: 1.4),
               ),
               const SizedBox(height: 16),
             ],

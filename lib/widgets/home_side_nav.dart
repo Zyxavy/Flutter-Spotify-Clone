@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import '../theme/app_colors.dart';
+import '../theme/app_text_styles.dart';
+
+
 
 class HomeSideNav extends StatelessWidget {
   final VoidCallback? onClose;
@@ -16,11 +20,11 @@ class HomeSideNav extends StatelessWidget {
             width: 312,
             margin: const EdgeInsets.only(left: 8),
             decoration: BoxDecoration(
-              color: const Color(0xFF181818),
+              color: AppColors.surface2,
               borderRadius: const BorderRadius.horizontal(right: Radius.circular(24)),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.45),
+                  color: AppColors.bg.withValues(alpha: 0.45),
                   blurRadius: 20,
                   offset: const Offset(6, 0),
                 ),
@@ -38,18 +42,18 @@ class HomeSideNav extends StatelessWidget {
                         backgroundColor: Color(0xFFFF6B2A),
                         child: Text(
                           'K',
-                          style: TextStyle(fontWeight: FontWeight.w800, color: Colors.black),
+                          style: TextStyle(fontWeight: FontWeight.w800, color: AppColors.bg),
                         ),
                       ),
                       const SizedBox(width: 12),
-                      const Expanded(
+                      Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               'Karthik S',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: AppColors.textPrimary,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
                               ),
@@ -57,7 +61,7 @@ class HomeSideNav extends StatelessWidget {
                             SizedBox(height: 2),
                             Text(
                               'View profile',
-                              style: TextStyle(color: Color(0xFFA7A7A7), fontSize: 12),
+                              style: AppTextStyles.bodyS.copyWith(fontSize: 12),
                             ),
                           ],
                         ),
@@ -65,13 +69,13 @@ class HomeSideNav extends StatelessWidget {
                       IconButton(
                         onPressed: onClose,
                         splashRadius: 20,
-                        icon: const Icon(Icons.close, color: Color(0xFFB3B3B3), size: 20),
+                        icon: const Icon(Icons.close, color: AppColors.textSecondary, size: 20),
                       ),
                     ],
                   ),
                 ),
         
-                const Divider(color: Color(0xFF2A2A2A), height: 1),
+                Divider(color: AppColors.border, height: 1),
                 const SizedBox(height: 8),
                 const _MenuItem(label: 'Add account'),
                 const _MenuItem(label: 'Listening stats'),
@@ -79,7 +83,7 @@ class HomeSideNav extends StatelessWidget {
                 const _MenuItem(label: 'Your Updates'),
                 const _MenuItem(label: 'Settings and privacy'),
                 const SizedBox(height: 6),
-                const Divider(color: Color(0xFF2A2A2A), height: 1),
+                Divider(color: AppColors.border, height: 1),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(18, 16, 18, 4),
                   child: Row(
@@ -88,7 +92,7 @@ class HomeSideNav extends StatelessWidget {
                         child: Text(
                           'Messages',
                           style: TextStyle(
-                            color: Colors.white,
+                            color: AppColors.textPrimary,
                             fontWeight: FontWeight.w700,
                             fontSize: 15,
                           ),
@@ -96,7 +100,7 @@ class HomeSideNav extends StatelessWidget {
                       ),
                       TextButton.icon(
                         style: TextButton.styleFrom(
-                          foregroundColor: Colors.white,
+                          foregroundColor: AppColors.textPrimary,
                           textStyle: const TextStyle(fontWeight: FontWeight.w600),
                         ),
                         onPressed: () {},
@@ -129,11 +133,7 @@ class _MenuItem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
         child: Text(
           label,
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w600,
-            fontSize: 15,
-          ),
+          style: AppTextStyles.bodyM.copyWith(fontWeight: FontWeight.w600),
         ),
       ),
     );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../theme/app_colors.dart';
+import '../../theme/app_text_styles.dart';
 
 class CreateScreen extends StatelessWidget {
   const CreateScreen({super.key});
@@ -8,7 +8,7 @@ class CreateScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black.withValues(alpha: 0.65),
+      backgroundColor: AppColors.bg.withValues(alpha: 0.65),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
@@ -29,7 +29,7 @@ class CreateScreen extends StatelessWidget {
                   child: Container(
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: const Color(0xFF212121),
+                      color: AppColors.surface2,
                       borderRadius: BorderRadius.circular(28),
                     ),
                     child: Column(
@@ -73,11 +73,7 @@ class _CreateActionRow extends StatelessWidget {
       leading: Icon(icon, color: AppColors.textPrimary),
       title: Text(
         title,
-        style: const TextStyle(
-          color: AppColors.textPrimary,
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
-        ),
+        style: AppTextStyles.titleS,
       ),
       onTap: () {},
     );
